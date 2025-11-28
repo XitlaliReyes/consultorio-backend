@@ -9,7 +9,7 @@ const sgMail = require('@sendgrid/mail');
 // Cargar variables del .env
 dotenv.config();
 // Configurar SendGrid API Key
-sgMail.setApiKey(SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // Crear app express
 const app = express();
 app.use(cors());
@@ -21,16 +21,16 @@ const CORREO_REMITENTE_VERIFICADO = 'sonrisasfelicesdental@outlook.com';
 const checkJwt = auth({
   audience: 'https://dev-7iloabq8ips3sdq0.us.auth0.com/api/v2/',
   issuerBaseURL: 'https://dev-7iloabq8ips3sdq0.us.auth0.com/',
-  tokenSigningAlg: AUTH0_TOKEN_SIGNING_ALG || "RS256"
+  tokenSigningAlg: process.env.AUTH0_TOKEN_SIGNING_ALG || "RS256"
 });
 
 // Conexión a MySQL con promises
 const pool = mysql.createPool({
-  hosty: MYSQLHOST,
-  user: MYSQLUSER,
-  port: MYSQLPORT,
-  password: MYSQLPASSWORD,
-  database: MYSQL_DATABASE,
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  port: process.env.MYSQLPORT,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQL_DATABASE,
   waitForConnections: true,
   connectionLimit: 10
 });
