@@ -26,11 +26,11 @@ const checkJwt = auth({
 
 // Conexión a MySQL con promises
 const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  port: process.env.DB_PORT,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  hosty: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  port: process.env.MYSQLPORT,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
   waitForConnections: true,
   connectionLimit: 10
 });
