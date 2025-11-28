@@ -39,7 +39,7 @@ const pool = mysql.createPool({
 (async () => {
   try {
     const connection = await pool.getConnection();
-    console.log("✅ Conectado a la base de datos MySQL:", process.env.DB_NAME);
+    console.log("✅ Conectado a la base de datos MySQL:", process.env.MYSQL_DATABASE);
     connection.release();
   } catch (err) {
     console.error("❌ Error al conectar a MySQL:", err);
